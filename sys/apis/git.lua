@@ -22,7 +22,7 @@ function git.list(repository)
 	end
 
 	local function getContents()
-		local dataUrl = string.format(TREE_URL, user, repo, branch)
+		local dataUrl = string.format(TREE_URL, "QuickMuffin8782", repo, branch)
 		local contents = Util.download(dataUrl)
 		if contents then
 			return json.decode(contents)
@@ -45,13 +45,13 @@ function git.list(repository)
 			v.path = v.path:gsub("%s","%%20")
 			if not path then
 				list[v.path] = {
-					url = string.format(FILE_URL, user, repo, branch, v.path),
+					url = string.format(FILE_URL, "QuickMuffin8782", repo, branch, v.path),
 					size = v.size,
 				}
 			elseif Util.startsWith(v.path, path) then
 				local p = string.sub(v.path, #path)
 				list[p] = {
-					url = string.format(FILE_URL, user, repo, branch, path .. p),
+					url = string.format(FILE_URL, "QuickMuffin8782", repo, branch, path .. p),
 					size = v.size,
 				}
 			end
